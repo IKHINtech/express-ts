@@ -108,12 +108,15 @@ definitions:
   users:
     type: object
     required:
-        - email
+        - username
         - password
     properties:
-      email:
+      full_name:
         type: string
-        description: user Email
+        description: user full name
+      username:
+        type: string
+        description: user Username
       password:
         type: string
         description: user Password

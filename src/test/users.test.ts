@@ -18,17 +18,17 @@ describe('Testing Users', () => {
       users.findAll = jest.fn().mockReturnValue([
         {
           id: 1,
-          email: 'a@email.com',
+          username: 'sa@username.com',
           password: await bcrypt.hash('q1w2e3r4!', 10),
         },
         {
           id: 2,
-          email: 'b@email.com',
+          username: 'b@username.com',
           password: await bcrypt.hash('a1s2d3f4!', 10),
         },
         {
           id: 3,
-          email: 'c@email.com',
+          username: 'c@username.com',
           password: await bcrypt.hash('z1x2c3v4!', 10),
         },
       ]);
@@ -48,7 +48,7 @@ describe('Testing Users', () => {
 
       users.findByPk = jest.fn().mockReturnValue({
         id: 1,
-        email: 'a@email.com',
+        username: 'a@username.com',
         password: await bcrypt.hash('q1w2e3r4!', 10),
       });
 
@@ -61,7 +61,7 @@ describe('Testing Users', () => {
   describe('[POST] /users', () => {
     it('response Create user', async () => {
       const userData: CreateUserDto = {
-        email: 'test@email.com',
+        username: 'test@username.com',
         password: 'q1w2e3r4!',
       };
 
@@ -71,7 +71,7 @@ describe('Testing Users', () => {
       users.findOne = jest.fn().mockReturnValue(null);
       users.create = jest.fn().mockReturnValue({
         id: 1,
-        email: userData.email,
+        username: userData.username,
         password: await bcrypt.hash(userData.password, 10),
       });
 
@@ -85,7 +85,7 @@ describe('Testing Users', () => {
     it('response Update user', async () => {
       const userId = 1;
       const userData: CreateUserDto = {
-        email: 'test@email.com',
+        username: 'test@username.com',
         password: '1q2w3e4r!',
       };
 
@@ -94,13 +94,13 @@ describe('Testing Users', () => {
 
       users.findByPk = jest.fn().mockReturnValue({
         id: userId,
-        email: userData.email,
+        username: userData.username,
         password: await bcrypt.hash(userData.password, 10),
       });
       users.update = jest.fn().mockReturnValue([1]);
       users.findByPk = jest.fn().mockReturnValue({
         id: userId,
-        email: userData.email,
+        username: userData.username,
         password: await bcrypt.hash(userData.password, 10),
       });
 
@@ -119,7 +119,7 @@ describe('Testing Users', () => {
 
       users.findByPk = jest.fn().mockReturnValue({
         id: userId,
-        email: 'a@email.com',
+        username: 'a@username.com',
         password: await bcrypt.hash('q1w2e3r4!', 10),
       });
 

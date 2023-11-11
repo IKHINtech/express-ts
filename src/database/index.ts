@@ -2,9 +2,6 @@ import Sequelize from 'sequelize';
 import { NODE_ENV, DB_HOST, DB_PORT, DB_USER, DB_DATABASE } from '@config';
 import UserModel from '@models/users.model';
 import { logger } from '@utils/logger';
-import ProductModel from '@/models/products.model';
-import CategoryModel from '@/models/categories.model';
-import ManufactureModel from '@/models/manufactures.model';
 
 const sequelize = new Sequelize.Sequelize(DB_DATABASE, DB_USER, undefined, {
   dialect: 'mysql',
@@ -32,9 +29,6 @@ sequelize.authenticate();
 
 export const DB = {
   Users: UserModel(sequelize),
-  Products: ProductModel(sequelize),
-  Categories: CategoryModel(sequelize),
-  Manufactures: ManufactureModel(sequelize),
   sequelize, // connection instance (RAW queries)
   Sequelize, // library
 };
