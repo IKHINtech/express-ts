@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { Container } from 'typedi';
 import { CategoryDto } from '@dtos/categories.dto';
 import { Category } from '@interfaces/categories.interface';
-import { CategoryService } from '@services/categories.serivice';
+import { CategoryService } from '@/services/categories.services';
 
 export class CategoryController {
   public Category = Container.get(CategoryService);

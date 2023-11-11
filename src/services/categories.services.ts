@@ -1,4 +1,3 @@
-import { hash } from 'bcrypt';
 import { Service } from 'typedi';
 import { DB } from '@database';
 import { CategoryDto } from '@dtos/categories.dto';
@@ -21,7 +20,7 @@ export class CategoryService {
 
   public async createCategorie(CategorieData: CategoryDto): Promise<Category> {
     const findCategorie: Category = await DB.Categories.findOne({ where: { category_name: CategorieData.category_name } });
-    if (findCategorie) throw new HttpException(409, `This email ${CategorieData.category_name} already exists`);
+    if (findCategorie) throw new HttpException(409, `This name ${CategorieData.category_name} already exists`);
 
     const createCategorieData: Category = await DB.Categories.create({ ...CategorieData });
     return createCategorieData;
